@@ -15,9 +15,9 @@ echo "                                                  "
 echo "##################################################"
 
 cd
-apt update
-apt upgrade
-apt install imagemagick curl enscript ffmpeg gnuplot grads graphviz groff build-essential git bison zathura zathura-ps zathura-djvu python3-pip m4 m4-doc dictd dict-gcide dict-freedict-fra-eng openssh-client openssh-server gdb parallel lynx autoconf autoconf-doc automake libtool zlib1g p7zip-full p7zip-rar unrar unzip make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libgmp-dev libunistring-dev libffi-dev libgc-dev vlc libglib2.0-dev libmagickwand-dev gtk-doc-tools pv cmake libmpfr-dev libmpc-dev ninja-build sox lame flac mencoder ecasound vorbis-tools colordiff xclip libreadline-dev neofetch lm-sensors libgtk-3-dev libgdk-pixbuf2.0-dev libssl-dev libimlib2-dev libgif-dev libexif-dev libxft-dev fontconfig jq mpv lftp htop gfortran liblapack-dev libopenblas-dev python-is-python3
+sudo apt update
+sudo apt upgrade
+sudo apt install imagemagick curl enscript ffmpeg gnuplot grads graphviz groff build-essential git bison zathura zathura-ps zathura-djvu python3-pip m4 m4-doc dictd dict-gcide dict-freedict-fra-eng openssh-client openssh-server gdb parallel lynx autoconf autoconf-doc automake libtool zlib1g p7zip-full p7zip-rar unrar unzip make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libgmp-dev libunistring-dev libffi-dev libgc-dev vlc libglib2.0-dev libmagickwand-dev gtk-doc-tools pv cmake libmpfr-dev libmpc-dev ninja-build sox lame flac mencoder ecasound vorbis-tools colordiff xclip libreadline-dev neofetch lm-sensors libgtk-3-dev libgdk-pixbuf2.0-dev libssl-dev libimlib2-dev libgif-dev libexif-dev libxft-dev fontconfig jq mpv lftp htop gfortran liblapack-dev libopenblas-dev python-is-python3
 
 mkdir ~/tools
 cd ~/tools
@@ -44,9 +44,9 @@ tar zxvf hmmer.tar.gz
 cd hmmer-3.3.2
 ./configure
 make
-make install
+sudo make install
 cd easel
-make install
+sudo make install
 cd ~/tools
 rm -rf hmmer-3.3.2
 
@@ -84,6 +84,33 @@ make
 cp bioawk ~/tools/bin
 cd ~/tools
 rm -rf bioawk
+
+git clone https://github.com/rcedgar/muscle
+cd muscle/src
+make
+cp Linux/muscle ~/tools/bin
+cd ~/tools
+rm -rf muscle
+
+wget http://www.microbesonline.org/fasttree/FastTreeDbl
+chmod +x FastTreeDbl
+mv FastTreeDbl ~/tools/bin
+
+wget https://github.com/shenwei356/taxonkit/releases/download/v0.12.0/taxonkit_linux_amd64.tar.gz
+tar zxvf taxonkit_linux_amd64.tar.gz
+rm taxonkit_linux_amd64.tar.gz
+mv taxonkit ~/tools/bin
+
+wget -c ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
+tar zxvf taxdump.tar.gz
+mkdir -p $HOME/.taxonkit
+cp names.dmp nodes.dmp delnodes.dmp merged.dmp $HOME/.taxonkit
+rm citations.dmp division.dmp gc.prt gencode.dmp readme.txt taxdump.tar.gz
+
+wget https://github.com/shenwei356/seqkit/releases/download/v2.3.0/seqkit_linux_amd64.tar.gz
+tar zxvf seqkit_linux_amd64.tar.gz
+rm seqkit_linux_amd64.tar.gz
+mv seqkit ~/tools/bin
 
 wget https://github.com/makeworld-the-better-one/amfora/releases/download/v1.9.2/amfora_1.9.2_linux_64-bit
 mv amfora_1.9.2_linux_64-bit amfora
