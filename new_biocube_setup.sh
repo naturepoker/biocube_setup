@@ -10,7 +10,7 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - SEP 03 2022           "
+echo "           SCRIPT UPDATED - SEP 06 2022           "
 echo "                                                  "
 echo "##################################################"
 
@@ -95,6 +95,10 @@ rm -rf muscle
 wget http://www.microbesonline.org/fasttree/FastTreeDbl
 chmod +x FastTreeDbl
 mv FastTreeDbl ~/tools/bin
+
+wget http://opengene.org/fastp/fastp
+chmod +x fastp 
+mv fastp ~/tools/bin
 
 wget https://github.com/shenwei356/taxonkit/releases/download/v0.12.0/taxonkit_linux_amd64.tar.gz
 tar zxvf taxonkit_linux_amd64.tar.gz
