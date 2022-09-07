@@ -41,6 +41,7 @@ rm -rf samtools
 
 wget http://eddylab.org/software/hmmer/hmmer.tar.gz
 tar zxvf hmmer.tar.gz
+rm hmmer.tar.gz
 cd hmmer-3.3.2
 ./configure
 make
@@ -108,7 +109,7 @@ mv taxonkit ~/tools/bin
 wget -c ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
 tar zxvf taxdump.tar.gz
 mkdir -p $HOME/.taxonkit
-cp names.dmp nodes.dmp delnodes.dmp merged.dmp $HOME/.taxonkit
+mv names.dmp nodes.dmp delnodes.dmp merged.dmp $HOME/.taxonkit
 rm citations.dmp division.dmp gc.prt gencode.dmp readme.txt taxdump.tar.gz
 
 wget https://github.com/shenwei356/seqkit/releases/download/v2.3.0/seqkit_linux_amd64.tar.gz
@@ -136,6 +137,7 @@ rm -rf ncbi-blast-2.13.0+-x64-linux.tar.gz ncbi-blast-2.13.0+
 sh -c "$(wget -q ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh -O -)"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source ~/.bashrc
 
 git clone https://github.com/atanunq/viu
 cd viu
