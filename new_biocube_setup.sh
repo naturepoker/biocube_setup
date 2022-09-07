@@ -163,8 +163,8 @@ echo "##################################################"
 echo "##################################################"
 echo "## You might want to add below paths to .bashrc ##"
 echo "                                                  "
-echo "export PATH=${PATH}:$HOME/tools/bin               "
-echo "export PATH=${PATH}:$HOME/.local/bin              "
-echo "export PATH=${PATH}:$HOME/tools/scripts/sung-tools"
+echo 'export PATH=${PATH}:$HOME/tools/bin               '
+echo 'export PATH=${PATH}:$HOME/.local/bin              '
+echo 'export PATH=${PATH}:$HOME/tools/scripts/sung-tools'
 echo "                                                  "
 echo "                                                  "
