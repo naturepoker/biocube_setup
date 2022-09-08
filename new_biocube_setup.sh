@@ -51,6 +51,13 @@ sudo make install
 cd ~/tools
 rm -rf hmmer-3.3.2
 
+mkdir pfam
+cd pfam
+wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
+gunzip Pfam-A.hmm.gz
+hmmpress Pfam-A.hmm
+cd ~/tools
+
 git clone https://github.com/lh3/seqtk
 cd seqtk
 make
