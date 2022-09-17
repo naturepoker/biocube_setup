@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+if [[ $(uname -a) == x86_64 ]]; then
+	printf "\n Compatible CPU architecture found"
+else
+	printf "\n Incompatible architecture found. This setup script is meant for x86_64 machines"
+	exit
+fi
+
 if ! command -v apt > /dev/null; then
 	printf "\n This script is meant for Debian/Ubuntu systems with apt command. Exiting"
 	exit
@@ -71,6 +78,13 @@ make
 mv minimap2 ~/tools/bin
 cd ~/tools
 rm -rf minimap2
+
+git clone https://github.com/lh3/miniprot
+cd miniprot
+make
+mv miniprot ~/tools/bin
+cd ~/tools
+rm -rf miniprot
 
 git clone https://github.com/lh3/bwa
 cd bwa
