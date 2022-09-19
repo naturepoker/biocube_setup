@@ -109,7 +109,12 @@ rm -rf bioawk
 
 git clone https://github.com/iqtree/iqtree2
 mkdir iqtree2/build
-cd iqtree2/build
+cd iqtree2/
+#iqtree2/1 git repo seems to require manual submodule init and update - otherwise compilation will fail due to missing lsd2
+#'git checkout latest' might be needed here too (Sep 19 2022)
+git submodule init
+git submodule update
+cd build
 cmake ..
 make -j
 mv iqtree2 ~/tools/bin
