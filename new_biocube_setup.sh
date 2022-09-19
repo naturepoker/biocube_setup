@@ -17,14 +17,14 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - SEP 06 2022           "
+echo "           SCRIPT UPDATED - SEP 19 2022           "
 echo "                                                  "
 echo "##################################################"
 
 cd
 sudo apt update
 sudo apt upgrade
-sudo apt install imagemagick curl enscript ffmpeg gnuplot grads graphviz groff build-essential git bison zathura zathura-ps zathura-djvu python3-pip m4 m4-doc dictd dict-gcide dict-freedict-fra-eng openssh-client openssh-server gdb parallel lynx autoconf autoconf-doc automake libtool zlib1g p7zip-full p7zip-rar unrar unzip make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libgmp-dev libunistring-dev libffi-dev libgc-dev vlc libglib2.0-dev libmagickwand-dev gtk-doc-tools pv cmake libmpfr-dev libmpc-dev ninja-build sox lame flac mencoder ecasound vorbis-tools colordiff xclip libreadline-dev neofetch lm-sensors libgtk-3-dev libgdk-pixbuf2.0-dev libssl-dev libimlib2-dev libgif-dev libexif-dev libxft-dev fontconfig jq mpv lftp htop gfortran liblapack-dev libopenblas-dev python-is-python3 libimage-exiftool-perl
+sudo apt install imagemagick curl enscript ffmpeg gnuplot grads graphviz groff build-essential git bison zathura zathura-ps zathura-djvu python3-pip m4 m4-doc dictd dict-gcide dict-freedict-fra-eng openssh-client openssh-server gdb parallel lynx autoconf autoconf-doc automake libtool zlib1g p7zip-full p7zip-rar unrar unzip make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libgmp-dev libunistring-dev libffi-dev libgc-dev vlc libglib2.0-dev libmagickwand-dev gtk-doc-tools pv cmake libmpfr-dev libmpc-dev ninja-build sox lame flac mencoder ecasound vorbis-tools colordiff xclip libreadline-dev neofetch lm-sensors libgtk-3-dev libgdk-pixbuf2.0-dev libssl-dev libimlib2-dev libgif-dev libexif-dev libxft-dev fontconfig jq mpv lftp htop gfortran liblapack-dev libopenblas-dev python-is-python3 libimage-exiftool-perl libeigen3-dev libboost-all-dev
 
 mkdir ~/tools
 cd ~/tools
@@ -106,6 +106,15 @@ make
 cp bioawk ~/tools/bin
 cd ~/tools
 rm -rf bioawk
+
+git clone https://github.com/iqtree/iqtree2
+mkdir iqtree2/build
+cd iqtree2/build
+cmake ..
+make -j
+mv iqtree2 ~/tools/bin
+cd ~/tools
+rm -rf iqtree2
 
 git clone https://github.com/rcedgar/muscle
 cd muscle/src
