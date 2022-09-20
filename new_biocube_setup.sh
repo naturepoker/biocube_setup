@@ -32,7 +32,7 @@ mkdir bin
 
 git clone https://github.com/arq5x/bedtools2
 cd bedtools2
-make
+make -j
 cp bin/* ~/tools/bin
 cd ~/tools
 
@@ -41,7 +41,7 @@ cd htslib
 git submodule update --init --recursive
 autoreconf -i
 ./configure
-make
+make -j
 sudo make install
 cd ~/tools
 rm -rf htslib
@@ -51,7 +51,7 @@ cd samtools
 autoheader
 autoconf -Wno-syntax
 ./configure
-make
+make -j
 cp samtools ~/tools/bin
 cd ~/tools
 rm -rf samtools
@@ -61,7 +61,7 @@ tar zxvf hmmer.tar.gz
 rm hmmer.tar.gz
 cd hmmer-3.3.2
 ./configure
-make
+make -j
 sudo make install
 cd easel
 sudo make install
@@ -77,42 +77,42 @@ cd ~/tools
 
 git clone https://github.com/lh3/seqtk
 cd seqtk
-make
+make -j
 mv seqtk ~/tools/bin
 cd ~/tools
 rm -rf seqtk
 
 git clone https://github.com/lh3/minimap2
 cd minimap2
-make
+make -j
 mv minimap2 ~/tools/bin
 cd ~/tools
 rm -rf minimap2
 
 git clone https://github.com/lh3/miniprot
 cd miniprot
-make
+make -j
 mv miniprot ~/tools/bin
 cd ~/tools
 rm -rf miniprot
 
 git clone https://github.com/lh3/bwa
 cd bwa
-make
+make -j
 mv bwa ~/tools/bin
 cd ~/tools
 rm -rf bwa
 
 git clone https://gitlab.com/mcfrith/last
 cd last
-make
+make -j
 cp bin/* ~/tools/bin
 cd ~/tools
 rm -rf last
 
 git clone https://github.com/lh3/bioawk
 cd bioawk
-make
+make -j
 cp bioawk ~/tools/bin
 cd ~/tools
 rm -rf bioawk
@@ -133,7 +133,7 @@ rm -rf iqtree2
 
 git clone https://github.com/rcedgar/muscle
 cd muscle/src
-make
+make -j
 cp Linux/muscle ~/tools/bin
 cd ~/tools
 rm -rf muscle
@@ -169,7 +169,7 @@ mv amfora ~/tools/bin
 
 git clone https://github.com/muennich/sxiv
 cd sxiv
-make
+make -j
 mv sxiv ~/tools/bin
 cd ~/tools
 rm -rf sxiv
