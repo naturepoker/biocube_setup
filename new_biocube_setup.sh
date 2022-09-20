@@ -36,6 +36,16 @@ make
 cp bin/* ~/tools/bin
 cd ~/tools
 
+git clone https://github.com/samtools/htslib
+cd htslib
+git submodule update --init --recursive
+autoreconf -i
+./configure
+make
+sudo make install
+cd ~/tools
+rm -rf htslib
+
 git clone https://github.com/samtools/samtools
 cd samtools
 autoheader
