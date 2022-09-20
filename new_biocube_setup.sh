@@ -117,6 +117,15 @@ cp bioawk ~/tools/bin
 cd ~/tools
 rm -rf bioawk
 
+git clone https://github.com/inab/trimal
+cd trimal/source
+make -j
+mv trimal ~/tools/bin
+mv statal ~/tools/bin
+mv readal ~/tools/bin
+cd ~/tools
+rm -rf trimal
+
 git clone https://github.com/iqtree/iqtree2
 mkdir iqtree2/build
 cd iqtree2/
