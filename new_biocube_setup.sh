@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $(uname -a) == x86_64 ]]; then
+if [[ $(uname -p) == x86_64 ]]; then
 	printf "\n Compatible CPU architecture found"
 else
 	printf "\n Incompatible architecture found. This setup script is meant for x86_64 machines"
