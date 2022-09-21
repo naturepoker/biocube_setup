@@ -17,7 +17,7 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - SEP 19 2022           "
+echo "           SCRIPT UPDATED - SEP 20 2022           "
 echo "                                                  "
 echo "##################################################"
 
@@ -211,6 +211,7 @@ pip3 install pyfaidx
 pip3 install biopython
 pip3 install ncbi-genome-download
 pip3 install bpytop
+pip3 install pipenv
 
 echo "##################################################"
 echo "##################################################"
