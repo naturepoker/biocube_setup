@@ -155,7 +155,7 @@ wget http://opengene.org/fastp/fastp
 chmod +x fastp 
 mv fastp ~/tools/bin
 
-wget https://github.com/shenwei356/taxonkit/releases/download/v0.12.0/taxonkit_linux_amd64.tar.gz
+wget https://github.com/shenwei356/taxonkit/releases/download/v0.13.0/taxonkit_linux_amd64.tar.gz
 tar zxvf taxonkit_linux_amd64.tar.gz
 rm taxonkit_linux_amd64.tar.gz
 mv taxonkit ~/tools/bin
