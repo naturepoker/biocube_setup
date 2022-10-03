@@ -212,6 +212,7 @@ pip3 install biopython
 pip3 install ncbi-genome-download
 pip3 install bpytop
 pip3 install pipenv
+pip3 install html2text
 
 echo "##################################################"
 echo "##################################################"
