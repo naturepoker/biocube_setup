@@ -214,6 +214,13 @@ cp target/release/castor ~/tools/bin
 cd ~/tools
 rm -rf castor
 
+git clone https://github.com/rrwick/Polypolish.git
+cd Polypolish
+cargo build --release
+mv target/release/polypolish ~/tools/bin
+cd ~/tools
+rm -rf Polypolish
+
 pip3 install pyfaidx
 pip3 install biopython
 pip3 install ncbi-genome-download
