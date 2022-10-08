@@ -82,6 +82,13 @@ mv seqtk ~/tools/bin
 cd ~/tools
 rm -rf seqtk
 
+git clone https://github.com/rrwick/Filtlong.git
+cd Filtlong
+make -j
+mv bin/filtlong ~/tools/bin
+cd ~/tools
+rm -rf Filtlong
+
 git clone https://github.com/lh3/minimap2
 cd minimap2
 make -j
