@@ -223,4 +223,5 @@ echo 'export PATH=${PATH}:$HOME/tools/bin               '
 echo 'export PATH=${PATH}:$HOME/.local/bin              '
 echo 'export PATH=${PATH}:$HOME/tools/scripts/sung-tools'
 echo "                                                  "
-echo "                                                  "
+echo "###### Also consider installing pandoc via  ######"
+echo "##### https://github.com/jgm/pandoc/releases #####"
