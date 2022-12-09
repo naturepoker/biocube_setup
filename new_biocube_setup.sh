@@ -119,7 +119,7 @@ rm -rf last
 
 git clone https://github.com/lh3/bioawk
 cd bioawk
-make -j
+make
 cp bioawk ~/tools/bin
 cd ~/tools
 rm -rf bioawk
