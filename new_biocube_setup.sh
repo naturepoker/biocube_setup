@@ -17,7 +17,7 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - OCT 24 2022           "
+echo "           SCRIPT UPDATED - DEC 08 2022           "
 echo "                                                  "
 echo "##################################################"
 
@@ -198,6 +198,7 @@ rm -rf ncbi-blast-2.13.0+-x64-linux.tar.gz ncbi-blast-2.13.0+
 sh -c "$(wget -q ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh -O -)"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"
 source ~/.bashrc
 
 git clone https://github.com/atanunq/viu
