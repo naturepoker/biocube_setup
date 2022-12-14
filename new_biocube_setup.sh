@@ -17,7 +17,7 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - DEC 08 2022           "
+echo "           SCRIPT UPDATED - DEC 14 2022           "
 echo "                                                  "
 echo "##################################################"
 
@@ -162,7 +162,7 @@ wget http://opengene.org/fastp/fastp
 chmod +x fastp 
 mv fastp ~/tools/bin
 
-wget https://github.com/shenwei356/taxonkit/releases/download/v0.13.0/taxonkit_linux_amd64.tar.gz
+wget https://github.com/shenwei356/taxonkit/releases/download/v0.14.0/taxonkit_linux_amd64.tar.gz
 tar zxvf taxonkit_linux_amd64.tar.gz
 rm taxonkit_linux_amd64.tar.gz
 mv taxonkit ~/tools/bin
@@ -173,7 +173,7 @@ mkdir -p $HOME/.taxonkit
 mv names.dmp nodes.dmp delnodes.dmp merged.dmp $HOME/.taxonkit
 rm citations.dmp division.dmp gc.prt gencode.dmp readme.txt taxdump.tar.gz
 
-wget https://github.com/shenwei356/seqkit/releases/download/v2.3.0/seqkit_linux_amd64.tar.gz
+wget https://github.com/shenwei356/seqkit/releases/download/v2.3.1/seqkit_linux_amd64.tar.gz
 tar zxvf seqkit_linux_amd64.tar.gz
 rm seqkit_linux_amd64.tar.gz
 mv seqkit ~/tools/bin
@@ -221,6 +221,13 @@ cargo build --release
 mv target/release/polypolish ~/tools/bin
 cd ~/tools
 rm -rf Polypolish
+
+git clone https://github.com/fulcrumgenomics/fqgrep
+cd fqgrep
+cargo build --release
+mv target/release/fqgrep ~/tools/bin
+cd ~/tools
+rm -rf fqgrep
 
 pip3 install pyfaidx
 pip3 install biopython
