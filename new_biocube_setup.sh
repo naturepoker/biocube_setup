@@ -140,6 +140,7 @@ cd iqtree2/
 #'git checkout latest' might be needed here too (Sep 19 2022)
 git submodule init
 git submodule update
+mkdir build
 cd build
 cmake ..
 make -j
