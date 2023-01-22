@@ -17,7 +17,7 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - DEC 14 2022           "
+echo "           SCRIPT UPDATED - JAN 22 2023           "
 echo "                                                  "
 echo "##################################################"
 
@@ -229,6 +229,10 @@ cargo build --release
 mv target/release/fqgrep ~/tools/bin
 cd ~/tools
 rm -rf fqgrep
+
+git clone https://github.com/mpdunne/alan
+mv alan/alan ~/tools/bin
+rm -rf alan
 
 pip3 install pyfaidx
 pip3 install biopython
