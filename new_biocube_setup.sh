@@ -17,14 +17,14 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - JAN 22 2023           "
+echo "           SCRIPT UPDATED - MAR 03 2023           "
 echo "                                                  "
 echo "##################################################"
 
 cd
 sudo apt update
 sudo apt upgrade
-sudo apt install imagemagick curl enscript ffmpeg gnuplot grads graphviz groff build-essential git bison zathura zathura-ps zathura-djvu python3-pip m4 m4-doc dictd dict-gcide dict-freedict-fra-eng openssh-client openssh-server gdb parallel lynx autoconf autoconf-doc automake libtool zlib1g p7zip-full p7zip-rar unrar unzip make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libgmp-dev libunistring-dev libffi-dev libgc-dev vlc libglib2.0-dev libmagickwand-dev gtk-doc-tools pv cmake libmpfr-dev libmpc-dev ninja-build sox lame flac mencoder ecasound vorbis-tools colordiff xclip libreadline-dev neofetch lm-sensors libgtk-3-dev libgdk-pixbuf2.0-dev libssl-dev libimlib2-dev libgif-dev libexif-dev libxft-dev fontconfig jq mpv lftp htop gfortran liblapack-dev libopenblas-dev python-is-python3 libimage-exiftool-perl libeigen3-dev libboost-all-dev libvirt-daemon qemu-kvm virt-manager texlive-xetex texlive-fonts-recommended texlive-plain-generic libfuse2 rlwrap
+sudo apt install imagemagick curl enscript ffmpeg gnuplot grads graphviz groff build-essential git bison zathura zathura-ps zathura-djvu python3-pip m4 m4-doc dictd dict-gcide dict-freedict-fra-eng openssh-client openssh-server gdb parallel lynx autoconf autoconf-doc automake libtool zlib1g p7zip-full p7zip-rar unrar unzip make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libgmp-dev libunistring-dev libffi-dev libgc-dev vlc libglib2.0-dev libmagickwand-dev gtk-doc-tools pv cmake libmpfr-dev libmpc-dev ninja-build sox lame flac mencoder ecasound vorbis-tools colordiff xclip libreadline-dev neofetch lm-sensors libgtk-3-dev libgdk-pixbuf2.0-dev libssl-dev libimlib2-dev libgif-dev libexif-dev libxft-dev fontconfig jq mpv lftp htop gfortran liblapack-dev libopenblas-dev python-is-python3 libimage-exiftool-perl libeigen3-dev libboost-all-dev libvirt-daemon qemu-kvm virt-manager texlive-xetex texlive-fonts-recommended texlive-plain-generic libfuse2 rlwrap python3-testresources
 
 mkdir ~/tools
 cd ~/tools
@@ -155,15 +155,15 @@ cp Linux/muscle ~/tools/bin
 cd ~/tools
 rm -rf muscle
 
-wget http://www.microbesonline.org/fasttree/FastTreeDbl
-chmod +x FastTreeDbl
-mv FastTreeDbl ~/tools/bin
+wget http://www.microbesonline.org/fasttree/FastTreeMP
+chmod +x FastTreeMP
+mv FastTreeMP ~/tools/bin
 
 wget http://opengene.org/fastp/fastp
 chmod +x fastp 
 mv fastp ~/tools/bin
 
-wget https://github.com/shenwei356/taxonkit/releases/download/v0.14.0/taxonkit_linux_amd64.tar.gz
+wget https://github.com/shenwei356/taxonkit/releases/download/v0.14.1/taxonkit_linux_amd64.tar.gz
 tar zxvf taxonkit_linux_amd64.tar.gz
 rm taxonkit_linux_amd64.tar.gz
 mv taxonkit ~/tools/bin
