@@ -17,7 +17,7 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - MAR 03 2023           "
+echo "           SCRIPT UPDATED - APR 12 2023           "
 echo "                                                  "
 echo "##################################################"
 
@@ -143,7 +143,7 @@ git submodule update
 mkdir build
 cd build
 cmake ..
-make -j
+make -j 2
 mv iqtree2 ~/tools/bin
 cd ~/tools
 rm -rf iqtree2
@@ -174,10 +174,26 @@ mkdir -p $HOME/.taxonkit
 mv names.dmp nodes.dmp delnodes.dmp merged.dmp $HOME/.taxonkit
 rm citations.dmp division.dmp gc.prt gencode.dmp readme.txt taxdump.tar.gz
 
-wget https://github.com/shenwei356/seqkit/releases/download/v2.3.1/seqkit_linux_amd64.tar.gz
+wget https://github.com/shenwei356/seqkit/releases/download/v2.4.0/seqkit_linux_amd64.tar.gz
 tar zxvf seqkit_linux_amd64.tar.gz
 rm seqkit_linux_amd64.tar.gz
 mv seqkit ~/tools/bin
+
+wget https://mmseqs.com/latest/mmseqs-linux-sse41.tar.gz
+tar zxvf mmseqs-linux-sse41.tar.gz
+ln -s ~/tools/mmseqs/bin/mmseqs ~/tools/bin/mmseqs
+rm mmseqs-linux-sse41.tar.gz
+
+git clone https://github.com/mpdunne/alan
+mv alan/alan ~/tools/bin
+rm -rf alan
+
+wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-linux.tar.gz
+tar zxvf ncbi-blast-2.13.0+-x64-linux.tar.gz
+cp ncbi-blast-2.13.0+/bin/* ~/tools/bin
+rm -rf ncbi-blast-2.13.0+-x64-linux.tar.gz ncbi-blast-2.13.0+
+
+sh -c "$(wget -q ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh -O -)"
 
 wget https://github.com/makeworld-the-better-one/amfora/releases/download/v1.9.2/amfora_1.9.2_linux_64-bit
 mv amfora_1.9.2_linux_64-bit amfora
@@ -191,12 +207,9 @@ mv sxiv ~/tools/bin
 cd ~/tools
 rm -rf sxiv
 
-wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-linux.tar.gz
-tar zxvf ncbi-blast-2.13.0+-x64-linux.tar.gz
-cp ncbi-blast-2.13.0+/bin/* ~/tools/bin
-rm -rf ncbi-blast-2.13.0+-x64-linux.tar.gz ncbi-blast-2.13.0+
-
-sh -c "$(wget -q ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh -O -)"
+wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
+chmod +x yt-dlp
+mv yt-dlp ~/tools/bin
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
@@ -230,10 +243,6 @@ mv target/release/fqgrep ~/tools/bin
 cd ~/tools
 rm -rf fqgrep
 
-git clone https://github.com/mpdunne/alan
-mv alan/alan ~/tools/bin
-rm -rf alan
-
 pip3 install pyfaidx
 pip3 install biopython
 pip3 install ncbi-genome-download
@@ -252,3 +261,9 @@ echo 'export PATH=${PATH}:$HOME/tools/scripts/sung-tools'
 echo "                                                  "
 echo "###### Also consider installing pandoc via  ######"
 echo "##### https://github.com/jgm/pandoc/releases #####"
+echo "                                                  "
+echo "######## And consider bioconda setup from ########"
+echo "https://repo.anaconda.com/miniconda/Miniconda3-py310_23.1.0-1-Linux-x86_64.sh"
+echo "###### conda config --add channels defaults ######"
+echo "###### conda config --add channels bioconda ######"
+echo "#### conda config --add channels conda-forge #####"
