@@ -188,10 +188,10 @@ git clone https://github.com/mpdunne/alan
 mv alan/alan ~/tools/bin
 rm -rf alan
 
-wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-linux.tar.gz
-tar zxvf ncbi-blast-2.13.0+-x64-linux.tar.gz
-cp ncbi-blast-2.13.0+/bin/* ~/tools/bin
-rm -rf ncbi-blast-2.13.0+-x64-linux.tar.gz ncbi-blast-2.13.0+
+wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.14.0+-x64-linux.tar.gz
+tar zxvf ncbi-blast-2.14.0+-x64-linux.tar.gz
+cp ncbi-blast-2.14.0+/bin/* ~/tools/bin
+rm -rf ncbi-blast-2.14.0+-x64-linux.tar.gz ncbi-blast-2.14.0+
 
 sh -c "$(wget -q ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh -O -)"
 
