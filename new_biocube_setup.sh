@@ -172,7 +172,7 @@ wget -c ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
 tar zxvf taxdump.tar.gz
 mkdir -p $HOME/.taxonkit
 mv names.dmp nodes.dmp delnodes.dmp merged.dmp $HOME/.taxonkit
-rm citations.dmp division.dmp gc.prt gencode.dmp readme.txt taxdump.tar.gz
+rm citations.dmp division.dmp gc.prt gencode.dmp images.dmp readme.txt taxdump.tar.gz
 
 wget https://github.com/shenwei356/seqkit/releases/download/v2.4.0/seqkit_linux_amd64.tar.gz
 tar zxvf seqkit_linux_amd64.tar.gz
