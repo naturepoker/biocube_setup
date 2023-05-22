@@ -46,15 +46,27 @@ sudo make install
 cd ~/tools
 rm -rf htslib
 
-git clone https://github.com/samtools/samtools
-cd samtools
-autoheader
-autoconf -Wno-syntax
-./configure
-make -j
-cp samtools ~/tools/bin
+#As of May 22 2023-
+#github compilation on Ubuntu 22.02.2 causes series of errors during compilation step:
+#gcc -Wall -g -O2 -I.  -I./lz4  -c -o cram_size.o cram_size.c
+#switching from github pull compilation to compilation of tarball directly from samtools site, which seems to work for some reason
+#git clone https://github.com/samtools/samtools
+#cd samtools
+#autoheader
+#autoconf -Wno-syntax
+#./configure
+#make -j
+#cp samtools ~/tools/bin
+#cd ~/tools
+#rm -rf samtools
+wget https://github.com/samtools/samtools/releases/download/1.17/samtools-1.17.tar.bz
+tar xf samtools-1.17.tar.bz2
+cd samtools-1.17/
+./configure 
+make
+sudo make install
 cd ~/tools
-rm -rf samtools
+rm -rf samtools-1.17 samtools-1.17.tar.bz2
 
 wget http://eddylab.org/software/hmmer/hmmer.tar.gz
 tar zxvf hmmer.tar.gz
