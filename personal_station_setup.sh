@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+setup_date=$(date +"%Y%m%d")
+
+
 if [[ $(uname -p) == x86_64 ]]; then
 	printf "\n Compatible CPU architecture found"
 else
@@ -17,122 +20,165 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - APR 12 2023           "
+echo "           SCRIPT UPDATED - JUN 18 2023           "
 echo "                                                  "
 echo "##################################################"
 
 cd
 sudo apt update
 sudo apt upgrade
-sudo apt install imagemagick curl enscript ffmpeg gnuplot grads graphviz groff build-essential git bison zathura zathura-ps zathura-djvu python3-pip m4 m4-doc dictd dict-gcide dict-freedict-fra-eng openssh-client openssh-server gdb parallel lynx autoconf autoconf-doc automake libtool zlib1g p7zip-full p7zip-rar unrar unzip make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libgmp-dev libunistring-dev libffi-dev libgc-dev vlc libglib2.0-dev libmagickwand-dev gtk-doc-tools pv cmake libmpfr-dev libmpc-dev ninja-build sox lame flac mencoder ecasound vorbis-tools colordiff xclip libreadline-dev neofetch lm-sensors libgtk-3-dev libgdk-pixbuf2.0-dev libssl-dev libimlib2-dev libgif-dev libexif-dev libxft-dev fontconfig jq mpv lftp htop gfortran liblapack-dev libopenblas-dev python-is-python3 libimage-exiftool-perl libeigen3-dev libboost-all-dev libvirt-daemon qemu-kvm virt-manager texlive-xetex texlive-fonts-recommended texlive-plain-generic libfuse2 rlwrap python3-testresources
+sudo apt install imagemagick curl enscript ffmpeg gnuplot grads graphviz groff build-essential git bison zathura zathura-ps zathura-djvu python3-pip m4 m4-doc dictd dict-gcide dict-freedict-fra-eng openssh-client openssh-server gdb parallel lynx autoconf autoconf-doc automake libtool zlib1g p7zip-full p7zip-rar unrar unzip make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libgmp-dev libunistring-dev libffi-dev libgc-dev vlc libglib2.0-dev libmagickwand-dev gtk-doc-tools pv cmake libmpfr-dev libmpc-dev ninja-build sox lame flac mencoder ecasound vorbis-tools colordiff xclip libreadline-dev neofetch lm-sensors libgtk-3-dev libgdk-pixbuf2.0-dev libssl-dev libimlib2-dev libgif-dev libexif-dev libxft-dev fontconfig jq mpv lftp htop gfortran liblapack-dev libopenblas-dev python-is-python3 libimage-exiftool-perl libeigen3-dev libboost-all-dev libvirt-daemon qemu-kvm virt-manager texlive-xetex texlive-fonts-recommended texlive-plain-generic libfuse2 rlwrap python3-testresources libsdl2-dev libpcre3-dev libfribidi-dev libmpg123-dev
 
 mkdir ~/tools
 cd ~/tools
 mkdir bin
+touch "$setup_date"_setup.log
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up bedtools2###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/arq5x/bedtools2
 cd bedtools2
-make -j
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 cp bin/* ~/tools/bin
 cd ~/tools
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up htslib###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/samtools/htslib
 cd htslib
 git submodule update --init --recursive
 autoreconf -i
-./configure
-make -j
+./configure 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 sudo make install
 cd ~/tools
 rm -rf htslib
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up samtools###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/samtools/samtools
 cd samtools
 autoheader
 autoconf -Wno-syntax
-./configure
-make -j
-cp samtools ~/tools/bin
+./configure 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+sudo make install
 cd ~/tools
-rm -rf samtools
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up hmmer###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 wget http://eddylab.org/software/hmmer/hmmer.tar.gz
 tar zxvf hmmer.tar.gz
 rm hmmer.tar.gz
 cd hmmer-3.3.2
-./configure
-make -j
+./configure 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make check 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 sudo make install
 cd easel
 sudo make install
 cd ~/tools
 rm -rf hmmer-3.3.2
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up pfam-A###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mkdir pfam
 cd pfam
 wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
 gunzip Pfam-A.hmm.gz
-hmmpress Pfam-A.hmm
+hmmpress Pfam-A.hmm 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 cd ~/tools
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up seqtk###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/lh3/seqtk
 cd seqtk
-make -j
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv seqtk ~/tools/bin
 cd ~/tools
 rm -rf seqtk
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up filtlong###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/rrwick/Filtlong.git
 cd Filtlong
-make -j
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv bin/filtlong ~/tools/bin
 cd ~/tools
 rm -rf Filtlong
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up minimap###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/lh3/minimap2
 cd minimap2
-make -j
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv minimap2 ~/tools/bin
 cd ~/tools
 rm -rf minimap2
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up miniprot###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/lh3/miniprot
 cd miniprot
-make -j
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv miniprot ~/tools/bin
 cd ~/tools
 rm -rf miniprot
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up bwa###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/lh3/bwa
 cd bwa
-make -j
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv bwa ~/tools/bin
 cd ~/tools
 rm -rf bwa
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up lastalign###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://gitlab.com/mcfrith/last
 cd last
-make -j
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 cp bin/* ~/tools/bin
 cd ~/tools
 rm -rf last
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up bioawk###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/lh3/bioawk
 cd bioawk
-make
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 cp bioawk ~/tools/bin
 cd ~/tools
 rm -rf bioawk
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up trimal###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/inab/trimal
 cd trimal/source
-make -j
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv trimal ~/tools/bin
 mv statal ~/tools/bin
 mv readal ~/tools/bin
 cd ~/tools
 rm -rf trimal
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up iqtree2###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/iqtree/iqtree2
 mkdir iqtree2/build
 cd iqtree2/
@@ -143,14 +189,17 @@ git submodule update
 mkdir build
 cd build
 cmake ..
-make -j 2
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv iqtree2 ~/tools/bin
 cd ~/tools
 rm -rf iqtree2
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up muscle5###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/rcedgar/muscle
 cd muscle/src
-make -j
+make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 cp Linux/muscle ~/tools/bin
 cd ~/tools
 rm -rf muscle
@@ -160,7 +209,7 @@ chmod +x FastTreeMP
 mv FastTreeMP ~/tools/bin
 
 wget http://opengene.org/fastp/fastp
-chmod +x fastp 
+chmod +x fastp
 mv fastp ~/tools/bin
 
 wget https://github.com/shenwei356/taxonkit/releases/download/v0.14.1/taxonkit_linux_amd64.tar.gz
@@ -211,6 +260,15 @@ wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
 chmod +x yt-dlp
 mv yt-dlp ~/tools/bin
 
+git clone --recursive --branch release https://git.skyjake.fi/gemini/lagrange
+mkdir lagrange_browser
+cd lagrange_browser
+cmake ~/tools/lagrange -DCMAKE_BUILD_TYPE=Release
+cmake --build .
+ln -s ~/tools/lagrange_browser/lagrange ~/tools/bin/lagrange
+cd ~/tools
+rm -rf lagrange
+
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 source ~/.bashrc
@@ -221,13 +279,6 @@ cargo install --path .
 cp target/release/viu ~/tools/bin
 cd ~/tools
 rm -rf viu
-
-git clone https://git.sr.ht/~julienxx/castor
-cd castor
-make
-cp target/release/castor ~/tools/bin
-cd ~/tools
-rm -rf castor
 
 git clone https://github.com/rrwick/Polypolish.git
 cd Polypolish
