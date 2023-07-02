@@ -26,7 +26,7 @@ echo "##################################################"
 cd
 sudo apt update
 sudo apt upgrade
-sudo apt install imagemagick curl enscript ffmpeg gnuplot grads graphviz groff build-essential git bison python3-pip m4 m4-doc dictd dict-gcide dict-freedict-fra-eng openssh-client openssh-server gdb parallel lynx autoconf autoconf-doc automake libtool zlib1g p7zip-full p7zip-rar unrar unzip make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libgmp-dev libunistring-dev libffi-dev libgc-dev vlc libglib2.0-dev libmagickwand-dev gtk-doc-tools pv cmake libmpfr-dev libmpc-dev ninja-build colordiff xclip libreadline-dev neofetch lm-sensors libgtk-3-dev libgdk-pixbuf2.0-dev libssl-dev libimlib2-dev libgif-dev libexif-dev libxft-dev fontconfig jq lftp htop gfortran liblapack-dev libopenblas-dev python-is-python3 libimage-exiftool-perl libeigen3-dev libboost-all-dev libvirt-daemon qemu-kvm virt-manager texlive-xetex texlive-fonts-recommended texlive-plain-generic libfuse2 rlwrap python3-testresources
+sudo apt install imagemagick curl enscript ffmpeg gnuplot grads graphviz groff build-essential git bison python3-pip m4 m4-doc dictd dict-gcide dict-freedict-fra-eng openssh-client openssh-server gdb parallel lynx autoconf autoconf-doc automake libtool zlib1g p7zip-full p7zip-rar unrar unzip make gcc perl zlib1g-dev libbz2-dev liblzma-dev libcurl4-gnutls-dev libssl-dev libncurses5-dev libgmp-dev libunistring-dev libffi-dev libgc-dev vlc libglib2.0-dev libmagickwand-dev gtk-doc-tools pv cmake libmpfr-dev libmpc-dev ninja-build colordiff xclip libreadline-dev neofetch lm-sensors libgtk-3-dev libgdk-pixbuf2.0-dev libssl-dev libimlib2-dev libgif-dev libexif-dev libxft-dev fontconfig jq lftp htop gfortran liblapack-dev libopenblas-dev python-is-python3 libimage-exiftool-perl libeigen3-dev libboost-all-dev libvirt-daemon qemu-kvm virt-manager texlive-xetex texlive-fonts-recommended texlive-plain-generic libfuse2 rlwrap python3-testresources libgsl-dev
 
 mkdir ~/tools
 cd ~/tools
@@ -202,6 +202,18 @@ make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 cp Linux/muscle ~/tools/bin
 cd ~/tools
 rm -rf muscle
+
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up FastANI###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+git clone https://github.com/ParBLiSS/FastANI
+cd FastANI
+./bootstrap.sh 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+./configure 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+cp fastANI ~/tools/bin
+cd ~/tools
+rm -rf FastANI
 
 wget http://www.microbesonline.org/fasttree/FastTreeMP
 chmod +x FastTreeMP
