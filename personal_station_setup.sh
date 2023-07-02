@@ -205,6 +205,18 @@ cp Linux/muscle ~/tools/bin
 cd ~/tools
 rm -rf muscle
 
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up FastANI###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+git clone https://github.com/ParBLiSS/FastANI
+cd FastANI
+./bootstrap.sh 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+./configure 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+cp fastANI ~/tools/bin
+cd ~/tools
+rm -rf FastANI
+
 wget http://www.microbesonline.org/fasttree/FastTreeMP
 chmod +x FastTreeMP
 mv FastTreeMP ~/tools/bin
