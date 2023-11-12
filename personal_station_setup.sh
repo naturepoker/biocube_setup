@@ -20,7 +20,7 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - JUN 18 2023           "
+echo "           SCRIPT UPDATED - NOV 12 2023           "
 echo "                                                  "
 echo "##################################################"
 
@@ -249,10 +249,10 @@ git clone https://github.com/mpdunne/alan
 mv alan/alan ~/tools/bin
 rm -rf alan
 
-wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.14.0+-x64-linux.tar.gz
-tar zxvf ncbi-blast-2.14.0+-x64-linux.tar.gz
-cp ncbi-blast-2.14.0+/bin/* ~/tools/bin
-rm -rf ncbi-blast-2.14.0+-x64-linux.tar.gz ncbi-blast-2.14.0+
+wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.15.0+-x64-linux.tar.gz
+tar zxvf ncbi-blast-2.15.0+-x64-linux.tar.gz
+cp ncbi-blast-2.15.0+/bin/* ~/tools/bin
+rm -rf ncbi-blast-2.15.0+-x64-linux.tar.gz ncbi-blast-2.15.0+
 
 sh -c "$(wget -q ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh -O -)"
 
@@ -312,6 +312,8 @@ pip3 install ncbi-genome-download
 pip3 install bpytop
 pip3 install pipenv
 pip3 install html2text
+
+curl -fsSL https://install.julialang.org | sh
 
 echo "##################################################"
 echo "##################################################"
