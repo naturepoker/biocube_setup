@@ -73,7 +73,7 @@ echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 wget http://eddylab.org/software/hmmer/hmmer.tar.gz
 tar zxvf hmmer.tar.gz
 rm hmmer.tar.gz
-cd hmmer-3.3.2
+cd hmmer-*
 ./configure 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 make check 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
@@ -81,7 +81,6 @@ sudo make install
 cd easel
 sudo make install
 cd ~/tools
-rm -rf hmmer-3.3.2
 
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up pfam-A###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
