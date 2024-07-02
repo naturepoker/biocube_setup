@@ -16,8 +16,6 @@ echo "           SCRIPT UPDATED - JUN 22 2024           "
 echo "                                                  "
 echo "##################################################"
 
-cd
-
 #assumes manual dnf update and initial upgrade & refresh
 #echo "max_parallel_downloads=20" >>  /etc/dnf/dnf.conf
 #sudo dnf -y upgrade --refresh

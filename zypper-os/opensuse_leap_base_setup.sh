@@ -16,8 +16,6 @@ echo "           SCRIPT UPDATED - JUN 30 2024           "
 echo "                                                  "
 echo "##################################################"
 
-cd
-
 #adapting from below guides - in order
 #https://en.opensuse.org/SDB:NVIDIA_drivers
 #https://en.opensuse.org/Additional_package_repositories
