@@ -2,11 +2,13 @@
 
 Simple setup script for downloading &amp; compiling bio tools on a new machine.
 
-Execute via: 
+Execute base setup script .sh files in an appropriate apt/dnf/zypper directory.  
 
 ```bash
-sh new_biocube_setup.sh
+sh *_base_setup.sh
 ```
-Some of the initial prompts will call for sudo, requiring a password.
+All the manual compilation targets for work tooling is called from a single unified directory at compilation_list/
 
-Intended for Debian/Ubuntu environments. 
+Base setup script will require sudo access. Compilation target script will require sudo access for installation, though most of their default targets are .local/bin
+
+
