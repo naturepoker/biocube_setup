@@ -233,10 +233,10 @@ git clone https://github.com/mpdunne/alan
 mv alan/alan ~/.local/bin
 rm -rf alan
 
-wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.15.0+-x64-linux.tar.gz
-tar zxvf ncbi-blast-2.15.0+-x64-linux.tar.gz
-cp ncbi-blast-2.15.0+/bin/* ~/.local/bin
-rm -rf ncbi-blast-2.15.0+-x64-linux.tar.gz ncbi-blast-2.15.0+
+wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.16.0+-x64-linux.tar.gz
+tar zxvf ncbi-blast-2.16.0+-x64-linux.tar.gz
+cp ncbi-blast-2.16.0+/bin/* ~/.local/bin
+rm -rf ncbi-blast-2.16.0+-x64-linux.tar.gz ncbi-blast-2.16.0+
 
 #wget through ftp does not seem to work anymore on fedora 40 onward
 #sh -c "$(wget -q ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh -O -)"
