@@ -238,12 +238,18 @@ tar zxvf ncbi-blast-2.16.0+-x64-linux.tar.gz
 cp ncbi-blast-2.16.0+/bin/* ~/.local/bin
 rm -rf ncbi-blast-2.16.0+-x64-linux.tar.gz ncbi-blast-2.16.0+
 
+#entrez is being phased out - this portion will be removed soon
 #wget through ftp does not seem to work anymore on fedora 40 onward
 #sh -c "$(wget -q ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh -O -)"
 lftp -c get ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh
 chmod +x install-edirect.sh
 ./install-edirect.sh
 rm install-edirect.sh
+
+#datasets from NCBI as entrez replacement
+lftp -c get https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets
+chmod +x datasets
+mv datasets ~/.local/bin
 
 wget https://github.com/makew0rld/amfora/releases/download/v1.10.0/amfora_1.10.0_linux_64-bit
 mv amfora_1.10.0_linux_64-bit amfora
