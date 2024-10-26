@@ -183,8 +183,10 @@ echo "###Setting up muscle5###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/rcedgar/muscle
 cd muscle/src
-make -j 1 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-cp Linux/muscle ~/.local/bin
+#make -j 1 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+chmod +x build_linux.bash
+./build_linux.bash
+cp ../bin/muscle ~/.local/bin
 cd ~/tools
 rm -rf muscle
 
