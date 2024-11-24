@@ -53,6 +53,16 @@ sudo make install
 cd ~/tools
 
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up bcftools###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+git clone https://github.com/samtools/bcftools.git
+cd bcftools
+autoheader && autoconf && ./configure --enable-libgsl 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+cp bcftools ~/.local/bin
+cd ~/tools
+
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up hmmer###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 wget http://eddylab.org/software/hmmer/hmmer.tar.gz
@@ -326,6 +336,7 @@ echo "##################################################"
 echo "## You might want to add below paths to .bashrc ##"
 echo "                                                  "
 echo 'export PATH=${PATH}:$HOME/tools/scripts/sung-tools'
+echo 'export BCFTOOLS_PLUGINS=/path/to/bcftools/plugins '
 echo "                                                  "
 echo "###### Also consider installing pandoc via  ######"
 echo "##### https://github.com/jgm/pandoc/releases #####"
