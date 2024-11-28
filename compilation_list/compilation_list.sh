@@ -212,6 +212,13 @@ cp fastANI ~/.local/bin
 cd ~/tools
 rm -rf FastANI
 
+git clone https://github.com/OpenGene/fastplong.git
+cd fastplong
+make
+mv fastplong ~/.local/bin
+cd ~/tools
+rm -rf fastplong
+
 wget http://www.microbesonline.org/fasttree/FastTreeMP
 chmod +x FastTreeMP
 mv FastTreeMP ~/.local/bin
