@@ -6,7 +6,7 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - JUN 22 2024           "
+echo "           SCRIPT UPDATED - MAR 20 2025           "
 echo "                                                  "
 echo "##################################################"
 
@@ -19,12 +19,12 @@ touch "$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up htslib###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/samtools/htslib
+git clone https://github.com/samtools/htslib.git
 cd htslib
 git submodule update --init --recursive
 autoreconf -i
 ./configure 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 sudo make install
 cd ~/tools
 rm -rf htslib
@@ -34,21 +34,21 @@ sudo ldconfig
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up bedtools2###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/arq5x/bedtools2
+git clone https://github.com/arq5x/bedtools2.git
 cd bedtools2
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 cp bin/* ~/.local/bin
 cd ~/tools
 
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up samtools###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/samtools/samtools
+git clone https://github.com/samtools/samtools.git
 cd samtools
 autoheader
 autoconf -Wno-syntax
 ./configure 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 sudo make install
 cd ~/tools
 
@@ -70,7 +70,7 @@ tar zxvf hmmer.tar.gz
 rm hmmer.tar.gz
 cd hmmer-*
 ./configure 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 make check 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 sudo make install
 cd easel
@@ -90,9 +90,9 @@ cd ~/tools
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up seqtk###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/lh3/seqtk
+git clone https://github.com/lh3/seqtk.git
 cd seqtk
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv seqtk ~/.local/bin
 cd ~/tools
 rm -rf seqtk
@@ -104,7 +104,7 @@ git clone https://github.com/rrwick/Filtlong.git
 cd Filtlong
 #echo "possible gcc13 build failure - add -#include <cstdint>- to kmer.h"
 #https://github.com/rrwick/Filtlong/pull/39
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv bin/filtlong ~/.local/bin
 cd ~/tools
 rm -rf Filtlong
@@ -112,9 +112,9 @@ rm -rf Filtlong
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up minimap###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/lh3/minimap2
+git clone https://github.com/lh3/minimap2.git
 cd minimap2
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv minimap2 ~/.local/bin
 cd ~/tools
 rm -rf minimap2
@@ -122,9 +122,9 @@ rm -rf minimap2
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up miniprot###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/lh3/miniprot
+git clone https://github.com/lh3/miniprot.git
 cd miniprot
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv miniprot ~/.local/bin
 cd ~/tools
 rm -rf miniprot
@@ -132,9 +132,9 @@ rm -rf miniprot
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up bwa###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/lh3/bwa
+git clone https://github.com/lh3/bwa.git
 cd bwa
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv bwa ~/.local/bin
 cd ~/tools
 rm -rf bwa
@@ -142,9 +142,9 @@ rm -rf bwa
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up lastalign###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://gitlab.com/mcfrith/last
+git clone https://gitlab.com/mcfrith/last.git
 cd last
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 cp bin/* ~/.local/bin
 cd ~/tools
 rm -rf last
@@ -152,7 +152,7 @@ rm -rf last
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up bioawk###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/lh3/bioawk
+git clone https://github.com/lh3/bioawk.git
 cd bioawk
 make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 cp bioawk ~/.local/bin
@@ -162,9 +162,9 @@ rm -rf bioawk
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up trimal###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/inab/trimal
+git clone https://github.com/inab/trimal.git
 cd trimal/source
-make -j 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv trimal ~/.local/bin
 mv statal ~/.local/bin
 mv readal ~/.local/bin
@@ -174,7 +174,7 @@ rm -rf trimal
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up iqtree2###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/iqtree/iqtree2
+git clone https://github.com/iqtree/iqtree2.git
 cd iqtree2/
 #iqtree2/1 git repo seems to require manual submodule init and update - otherwise compilation will fail due to missing lsd2
 #'git checkout latest' might be needed here too (Sep 19 2022)
@@ -191,7 +191,7 @@ rm -rf iqtree2
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up muscle5###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/rcedgar/muscle
+git clone https://github.com/rcedgar/muscle.git
 cd muscle/src
 #make -j 1 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 chmod +x build_linux.bash
@@ -203,7 +203,7 @@ rm -rf muscle
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up FastANI###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/ParBLiSS/FastANI
+git clone https://github.com/ParBLiSS/FastANI.git
 cd FastANI
 ./bootstrap.sh 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 ./configure 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
@@ -248,7 +248,7 @@ tar zxvf mmseqs-linux-sse41.tar.gz
 ln -s ~/tools/mmseqs/bin/mmseqs ~/.local/bin/mmseqs
 rm mmseqs-linux-sse41.tar.gz
 
-git clone https://github.com/mpdunne/alan
+git clone https://github.com/mpdunne/alan.git
 mv alan/alan ~/.local/bin
 rm -rf alan
 
@@ -275,7 +275,7 @@ mv amfora_1.10.0_linux_64-bit amfora
 chmod +x amfora
 mv amfora ~/.local/bin
 
-git clone https://github.com/muennich/sxiv
+git clone https://github.com/muennich/sxiv.git
 cd sxiv
 make -j
 mv sxiv ~/.local/bin
@@ -295,7 +295,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 source ~/.bashrc
 
-git clone https://github.com/atanunq/viu
+git clone https://github.com/atanunq/viu.git
 cd viu
 cargo install --path .
 cp target/release/viu ~/.local/bin
@@ -310,7 +310,7 @@ cp target/release/rasusa ~/.local/bin/
 cd ~/tools
 rm -rf rasusa
 
-git clone https://github.com/fulcrumgenomics/fqgrep
+git clone https://github.com/fulcrumgenomics/fqgrep.git
 cd fqgrep
 cargo build --release
 mv target/release/fqgrep ~/.local/bin
@@ -318,7 +318,7 @@ cd ~/tools
 rm -rf fqgrep
 
 pipx install pyfaidx
-#ncbi-genome-download deprecated for https://github.com/AstrobioMike/bit
+#ncbi-genome-download deprecated for https://github.com/AstrobioMike/bit and ncbi datasets
 pipx install bpytop
 pipx install html2text
 pipx install termvisage
@@ -327,11 +327,11 @@ pipx install termvisage
 #curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 #ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/kitty
 
-git clone https://github.com/hackerb9/lsix
+git clone https://github.com/hackerb9/lsix.git
 mv lsix/lsix ~/.local/bin
 rm -rf lsix
 
-git clone https://github.com/hackerb9/vv
+git clone https://github.com/hackerb9/vv.git
 cp vv/vv ~/.local/bin
 rm -rf vv
 
