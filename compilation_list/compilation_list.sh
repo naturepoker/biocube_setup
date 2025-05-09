@@ -171,6 +171,7 @@ mv readal ~/.local/bin
 cd ~/tools
 rm -rf trimal
 
+#iqtree3 released on May 05 2025 - will need to deprecate this part
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up iqtree2###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
@@ -187,6 +188,21 @@ make -j 1 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 mv iqtree2 ~/.local/bin
 cd ~/tools
 rm -rf iqtree2
+
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###Setting up iqtree3###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+git clone https://github.com/iqtree/iqtree3.git
+cd iqtree3
+git submodule init
+git submodule update
+mkdir build
+cd build
+cmake ..
+make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
+mv iqtree3 ~/.local/bin
+cd ~/tools
+rm -rf iqtree3
 
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up muscle5###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
