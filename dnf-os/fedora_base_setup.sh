@@ -42,7 +42,7 @@ sudo dnf group install --with-optional development-tools
 sudo dnf group install --with-optional c-development
 sudo dnf install @multimedia
 
-sudo dnf install -y imlib2-devel p7zip p7zip-plugins cmake colordiff datamash eigen3-devel flac flatpak gdk-pixbuf2-devel giflib-devel parallel gnuplot gsl-devel pipx htop ImageMagick zip imlib2 java-21-openjdk-devel lapack-devel lftp libexif-devel SDL2_gfx-devel meson gd-devel libunistring-devel lzma-sdk-devel libmpc-devel mpfr-devel mpv openblas-devel pv qemu rlwrap sox virt-manager unrar vte-devel zathura zathura-djvu zathura-pdf-mupdf w3m podman lm_sensors kernel-devel kernel-headers dkms acpid libglvnd-glx libglvnd-opengl libglvnd-devel pkgconfig distrobox libcurl-devel
+sudo dnf install -y imlib2-devel p7zip p7zip-plugins cmake colordiff datamash eigen3-devel flac flatpak gdk-pixbuf2-devel giflib-devel parallel gnuplot gsl-devel pipx htop ImageMagick zip imlib2 java-21-openjdk-devel lapack-devel lftp libexif-devel SDL2_gfx-devel meson gd-devel libunistring-devel lzma-sdk-devel libmpc-devel mpfr-devel mpv openblas-devel pv qemu rlwrap sox virt-manager unrar vte-devel zathura zathura-djvu zathura-pdf-mupdf w3m podman lm_sensors kernel-devel kernel-headers dkms acpid libglvnd-glx libglvnd-opengl libglvnd-devel pkgconfig distrobox libcurl-devel boost-devel
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
