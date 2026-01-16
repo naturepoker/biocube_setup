@@ -6,7 +6,7 @@ echo "##################################################"
 echo "##################################################"
 echo "##################################################"
 echo "                                                  "
-echo "           SCRIPT UPDATED - MAR 20 2025           "
+echo "           SCRIPT UPDATED - JAN 16 2026           "
 echo "                                                  "
 echo "##################################################"
 
@@ -171,24 +171,6 @@ mv readal ~/.local/bin
 cd ~/tools
 rm -rf trimal
 
-#iqtree3 released on May 05 2025 - will need to deprecate this part
-echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-echo "###Setting up iqtree2###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-git clone https://github.com/iqtree/iqtree2.git
-cd iqtree2/
-#iqtree2/1 git repo seems to require manual submodule init and update - otherwise compilation will fail due to missing lsd2
-#'git checkout latest' might be needed here too (Sep 19 2022)
-git submodule init
-git submodule update
-mkdir build
-cd build
-cmake ..
-make -j 1 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-mv iqtree2 ~/.local/bin
-cd ~/tools
-rm -rf iqtree2
-
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###Setting up iqtree3###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
@@ -228,13 +210,6 @@ cp fastANI ~/.local/bin
 cd ~/tools
 rm -rf FastANI
 
-git clone https://github.com/OpenGene/fastplong.git
-cd fastplong
-make
-mv fastplong ~/.local/bin
-cd ~/tools
-rm -rf fastplong
-
 wget http://www.microbesonline.org/fasttree/FastTreeMP
 chmod +x FastTreeMP
 mv FastTreeMP ~/.local/bin
@@ -243,7 +218,7 @@ wget http://opengene.org/fastp/fastp
 chmod +x fastp
 mv fastp ~/.local/bin
 
-wget https://github.com/shenwei356/taxonkit/releases/download/v0.16.0/taxonkit_linux_amd64.tar.gz
+wget https://github.com/shenwei356/taxonkit/releases/download/v0.20.0/taxonkit_linux_amd64.tar.gz
 tar zxvf taxonkit_linux_amd64.tar.gz
 rm taxonkit_linux_amd64.tar.gz
 mv taxonkit ~/.local/bin
@@ -254,7 +229,7 @@ mkdir -p $HOME/.taxonkit
 mv names.dmp nodes.dmp delnodes.dmp merged.dmp $HOME/.taxonkit
 rm citations.dmp division.dmp gc.prt gencode.dmp images.dmp readme.txt taxdump.tar.gz
 
-wget https://github.com/shenwei356/seqkit/releases/download/v2.8.2/seqkit_linux_amd64.tar.gz
+wget https://github.com/shenwei356/seqkit/releases/download/v2.11.2/seqkit_linux_amd64.tar.gz
 tar zxvf seqkit_linux_amd64.tar.gz
 rm seqkit_linux_amd64.tar.gz
 mv seqkit ~/.local/bin
@@ -268,10 +243,10 @@ git clone https://github.com/mpdunne/alan.git
 mv alan/alan ~/.local/bin
 rm -rf alan
 
-wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.16.0+-x64-linux.tar.gz
-tar zxvf ncbi-blast-2.16.0+-x64-linux.tar.gz
-cp ncbi-blast-2.16.0+/bin/* ~/.local/bin
-rm -rf ncbi-blast-2.16.0+-x64-linux.tar.gz ncbi-blast-2.16.0+
+wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.17.0+-x64-linux.tar.gz
+tar zxvf ncbi-blast-2.17.0+-x64-linux.tar.gz
+cp ncbi-blast-2.17.0+/bin/* ~/.local/bin
+rm -rf ncbi-blast-2.17.0+-x64-linux.tar.gz ncbi-blast-2.17.0+
 
 #entrez is being phased out - this portion will be removed soon
 #wget through ftp does not seem to work anymore on fedora 40 onward
@@ -353,24 +328,6 @@ rm -rf vv
 
 curl -fsSL https://install.julialang.org | sh
 
-echo "##################################################"
-echo "##################################################"
-echo "##################################################"
-echo "## You might want to add below paths to .bashrc ##"
-echo "                                                  "
-echo 'export PATH=${PATH}:$HOME/tools/scripts/sung-tools'
-echo 'export BCFTOOLS_PLUGINS=/path/to/bcftools/plugins '
-echo "                                                  "
-echo "###### Also consider installing pandoc via  ######"
-echo "##### https://github.com/jgm/pandoc/releases #####"
-echo "                                                  "
-echo "######## And consider bioconda setup from ########"
-echo "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-echo "or mamba alternateive!                            "
-echo "###### conda config --add channels defaults ######"
-echo "###### conda config --add channels bioconda ######"
-echo "#### conda config --add channels conda-forge #####"
-echo "##################################################"
 echo "##################################################"
 
 cat << EOF
