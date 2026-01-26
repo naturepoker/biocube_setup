@@ -180,7 +180,7 @@ echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 git clone https://github.com/lh3/bwa.git
 cd bwa
 make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
-ln -s $pwd/bwa ~/.local/bin
+ln -s $PWD/bwa ~/.local/bin
 cd ~/tools
 
 echo "###" 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
