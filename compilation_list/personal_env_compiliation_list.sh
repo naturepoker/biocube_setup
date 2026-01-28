@@ -27,7 +27,6 @@ autoreconf -i
 make 2>&1 | tee -a ~/tools/"$setup_date"_setup.log
 sudo make install
 cd ~/tools
-rm -rf htslib
 
 sudo ldconfig
 
